@@ -136,7 +136,7 @@ class SmartClone {
 				return false;
 
 			}
-			$this->setError(_AM_SCLONE_CHANGE_PERMISSION_FAILED . "test");
+			$this->setError(_AM_SCLONE_CHANGE_PERMISSION_FAILED);
 			return false;
 		}
 		$this->storeLogsToFile();
