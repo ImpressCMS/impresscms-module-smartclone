@@ -4,11 +4,20 @@ class SmartcloneFtpchmod {
 
 	var $_conn_id;
 	var $_ftp_root;
+	var $_logs;
 
 	function SmartcloneFtpchmod() {
 
 	}
 
+	function addLog($v) {
+		$this->_logs[$v];
+	}
+	
+	function getLogs() {
+		return $this->_logs;
+	}
+	
 	function chmod_open()
 	{
 	   // Use your own FTP info
@@ -18,7 +27,7 @@ class SmartcloneFtpchmod {
 	   $this->_ftp_root = '/';
 	   $this->_conn_id =  ftp_connect($ftp_server);
 	   $login_result = ftp_login($this->_conn_id, $ftp_user_name, $ftp_user_pass);
-	   xoops_debug('login result = ' . $login_result);
+	   $this->addLog('login result = ' . $login_result);
 	   return $this->_conn_id;
 	}
 
