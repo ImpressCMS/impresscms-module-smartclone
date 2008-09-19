@@ -125,7 +125,7 @@ class SmartClone {
 		$fileperm = fileperms($module_dir);
 		$this->addLog('Original permissions of folder "' . XOOPS_ROOT_PATH . '/modules' . '" : ' . $fileperm);
 
-		if (chmod($module_dir, 0777)) {
+		if (substr(sprintf('%o', fileperms($module_dir)), -4) || chmod($module_dir, 0777)) {
 			$this->cloneFileFolder($module_dir  . "/" . $this->_fromModule);
 		} else {
 			// try to change to chmod the folder by FTP
